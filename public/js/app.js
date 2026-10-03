@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const MENU_WEEKS = 8
-  const START_WEEK_MENU = 37
+  const START_WEEK_MENU = 38
   const weekSelectorContainer = document.getElementById("week-selector");
   const menuGridContainer = document.getElementById("menu-grid");
 
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   let weekDelta = getWeekNumber() - START_WEEK_MENU;
-  let currentWeek = weekDelta % MENU_WEEKS;
+  let currentWeek = (weekDelta + 1) % MENU_WEEKS;
  
   const dayColorClass = {
     "Lunes": "bg-lunes",

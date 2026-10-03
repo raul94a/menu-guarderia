@@ -1,0 +1,27 @@
+{
+  "name": "guarderiamenu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raul94a/menu-guarderia.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/raul94a/menu-guarderia/issues"
+  },
+  "homepage": "https://github.com/raul94a/menu-guarderia#readme",
+  "dependencies": {
+    "mocha": "^12.0.3"
+  }
+}
