@@ -1,11 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const MENU_WEEKS = 8
+  const START_WEEK_MENU = 37
   const weekSelectorContainer = document.getElementById("week-selector");
   const menuGridContainer = document.getElementById("menu-grid");
 
-  // State to track the currently selected week
-  let currentWeek = 1;
+  const getWeekNumber = (d = new Date()) => {
+    const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    date.setUTCDate(date.getUTCDate() + 4 - (date.getUTCDay() || 7));
+    const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+    return Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
+  };
 
-  // Map Spanish day names to the CSS classes we created in Step 2
+  let weekDelta = getWeekNumber() - START_WEEK_MENU;
+  let currentWeek = weekDelta % MENU_WEEKS;
+ 
   const dayColorClass = {
     "Lunes": "bg-lunes",
     "Martes": "bg-martes",
@@ -14,52 +22,43 @@ document.addEventListener("DOMContentLoaded", () => {
     "Viernes": "bg-viernes"
   };
 
-  // 1. Render the week selection buttons
   function renderWeekSelector() {
     weekSelectorContainer.innerHTML = "";
-    
-    // Create 8 buttons since we have 8 weeks of data
+
     for (let i = 1; i <= 8; i++) {
       const btn = document.createElement("button");
       btn.className = `week-btn ${i === currentWeek ? "active" : ""}`;
       btn.textContent = `Semana ${i}`;
-      
-      // Update state and re-render on click
+
       btn.addEventListener("click", () => {
         currentWeek = i;
-        renderWeekSelector(); 
-        renderMenu();         
+        renderWeekSelector();
+        renderMenu();
       });
-      
+
       weekSelectorContainer.appendChild(btn);
     }
   }
 
-  // 2. Render the menu grid for the selected week
   function renderMenu() {
     menuGridContainer.innerHTML = "";
-    
-    // Filter the global menuData (from data.js) to only show the current week
+
     const weekData = menuData.filter(day => day.week === currentWeek);
 
     weekData.forEach(dayInfo => {
       const dayCard = document.createElement("div");
       dayCard.className = "day-card";
 
-      // Fallback to Lunes color if mapping fails
-      const headerClass = dayColorClass[dayInfo.day] || "bg-lunes"; 
+      const headerClass = dayColorClass[dayInfo.day] || "bg-lunes";
 
-      // Build HTML for menu items
       const menuItemsHtml = dayInfo.menu
         .map(item => `<li class="menu-item">${item}</li>`)
         .join("");
 
-      // Build HTML for allergen tags
-      const allergensHtml = dayInfo.allergens.length > 0 
+      const allergensHtml = dayInfo.allergens.length > 0
         ? dayInfo.allergens.map(allergen => `<span class="allergen-tag">${allergen}</span>`).join("")
         : `<span class="allergen-tag">Sin alérgenos</span>`;
 
-      // Inject the template literal into the card
       dayCard.innerHTML = `
         <div class="day-header ${headerClass}">
           <h2>${dayInfo.day}</h2>
@@ -76,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
       `;
-      
+
       menuGridContainer.appendChild(dayCard);
     });
   }
