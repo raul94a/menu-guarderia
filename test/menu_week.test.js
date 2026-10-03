@@ -18,11 +18,11 @@ describe('test menu week number rotation', function(){
         console.log(`Generated deltaWeeks ${deltaWeeks}`)
         let numberDeltaWeeks = deltaWeeks.length;
         let firstExpectedModuleValue = (deltaWeeks[0] + 1) % NUMBER_OF_WEEK_MENUS
-        
+
         assert.equal(firstExpectedModuleValue, 1);
         for (let i = 0; i < numberDeltaWeeks; i++){
-            let expectedModuleValue = i % NUMBER_OF_WEEK_MENUS
-            let currentModuleValue = deltaWeeks[i] % NUMBER_OF_WEEK_MENUS;
+            let expectedModuleValue = (i + 1) % NUMBER_OF_WEEK_MENUS
+            let currentModuleValue = (deltaWeeks[i] + 1) % NUMBER_OF_WEEK_MENUS;
             assert.equal(expectedModuleValue, currentModuleValue)
         }
         
