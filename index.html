@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +8,39 @@
     <title>Menú Basal - CEI Reino de Simba</title>
     <link rel="stylesheet" href="public/css/index.css">
 </head>
+
 <body>
-    <header class="header">
-        <h1>Menú Escolar</h1>
-        <p>Selecciona la semana para ver el menú diario</p>
-    </header>
+    <div class="main-container">
+        <nav class="nav-menu">
+            <li>
+                <div class="menu-icon-container">
 
-    <main>
-        <div id="week-selector" class="week-selector">
-        </div>
+                    <div class="menu-icon"></div>
+                    <div class="menu-icon"></div>
+                    <div class="menu-icon"></div>
+                </div>
+                <p>Menu Semanal</p>
+                <p>Desayunos</p>
+                <p>Cenas</p>
+            </li>
+        </nav>
+        <div>
+            <header class="header">
+                <h1>Menú Escolar</h1>
+                <p>Selecciona la semana para ver el menú diario</p>
+            </header>
+            <main>
+                <div id="week-selector" class="week-selector">
+                </div>
 
-        <div id="menu-grid" class="menu-grid">
+                <div id="menu-grid" class="menu-grid">
+                </div>
+            </main>
         </div>
-    </main>
+    </div>
 
     <script src="public/js/data.js"></script>
     <script src="public/js/app.js"></script>
 </body>
+
 </html>

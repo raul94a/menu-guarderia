@@ -1,3 +1,16 @@
+
+function onClickMenu() {
+  const container = document.querySelector('.menu-icon-container')
+
+  container.addEventListener('click', (ev) => {
+    const options = document.querySelectorAll('.nav-menu li p')
+    options.forEach((el) => {
+      const status = el.style.display
+      el.style.display = status == 'none' ? 'block' : 'none'
+    })
+  })
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const MENU_WEEKS = 8
   const START_WEEK_MENU = 38
@@ -83,4 +96,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize the app
   renderWeekSelector();
   renderMenu();
+  onClickMenu();
 });

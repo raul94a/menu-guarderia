@@ -3,17 +3,18 @@
 :root {
   /* Colores base */
   --bg-color: #fdfaf6;
+  --bg-color-accent: #ffd7a2;
   --card-bg: #ffffff;
   --text-main: #5d4e4a;
   --text-muted: #8b7975;
-  
+
   /* Paleta pastel para los días */
   --pastel-lunes: #ffb3ba;
   --pastel-martes: #ffdfba;
-  --pastel-miercoles: #fcfc99; 
+  --pastel-miercoles: #fcfc99;
   --pastel-jueves: #baffc9;
   --pastel-viernes: #bae1ff;
-  
+
   /* UI Elements */
   --shadow-sm: 0 4px 6px rgba(93, 78, 74, 0.05);
   --shadow-md: 0 12px 24px rgba(93, 78, 74, 0.08);
@@ -33,10 +34,12 @@ body {
   background-color: var(--bg-color);
   color: var(--text-main);
   line-height: 1.5;
-  padding: 1rem;
+
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: 'Fredoka', sans-serif;
 }
 
@@ -116,11 +119,25 @@ h1, h2, h3 {
   letter-spacing: 1px;
 }
 
-.bg-lunes { background-color: var(--pastel-lunes); }
-.bg-martes { background-color: var(--pastel-martes); }
-.bg-miercoles { background-color: var(--pastel-miercoles); }
-.bg-jueves { background-color: var(--pastel-jueves); }
-.bg-viernes { background-color: var(--pastel-viernes); }
+.bg-lunes {
+  background-color: var(--pastel-lunes);
+}
+
+.bg-martes {
+  background-color: var(--pastel-martes);
+}
+
+.bg-miercoles {
+  background-color: var(--pastel-miercoles);
+}
+
+.bg-jueves {
+  background-color: var(--pastel-jueves);
+}
+
+.bg-viernes {
+  background-color: var(--pastel-viernes);
+}
 
 .menu-content {
   padding: 1.2rem;
@@ -177,38 +194,47 @@ h1, h2, h3 {
   border: 1px solid rgba(93, 78, 74, 0.1);
 }
 
+.menu-icon {
+  width: 30px;
+  height: 5px;
+  background-color: black;
+  margin: 6px 0;
+}
+
+.menu-icon-container:hover {
+  cursor: pointer;
+}
+
 /* Escalado para Tabletas y Escritorio */
 @media (min-width: 768px) {
-  body {
-    padding: 2rem;
-  }
-  
+  body {}
+
   .header h1 {
     font-size: 3rem;
   }
-  
+
   .header p {
     font-size: 1.2rem;
   }
-  
+
   .week-selector {
     gap: 1rem;
     margin-bottom: 3rem;
   }
-  
+
   .week-btn {
     padding: 0.75rem 1.5rem;
     font-size: 1.1rem;
     flex: 0 1 auto;
     max-width: none;
   }
-  
+
   .week-btn:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
     color: var(--text-main);
   }
-  
+
   .menu-grid {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
@@ -224,7 +250,7 @@ h1, h2, h3 {
   .day-header {
     padding: 1.5rem;
   }
-  
+
   .day-header h2 {
     font-size: 1.8rem;
   }
@@ -236,5 +262,25 @@ h1, h2, h3 {
   .menu-item {
     padding-left: 1.8rem;
     font-size: 1.05rem;
+  }
+
+  .main-container {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0 auto;
+    height: max-content;
+  }
+
+  .nav-menu {
+    min-width: 100px;
+    background-color: var(--bg-color-accent);
+    margin-right: 1rem;
+    padding: 1rem;
+  }
+
+  .nav-menu li>p {
+    margin: 1rem 0;
+    padding: 0.5rem 0;
   }
 }
